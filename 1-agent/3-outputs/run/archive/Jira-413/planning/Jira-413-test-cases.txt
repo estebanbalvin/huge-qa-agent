@@ -1,0 +1,50 @@
+Jira-413 – TC-01: Successful employee registration with all valid fields
+  Steps: 
+    1. Navigate to https://testing1.geekqa.net/
+    2. Fill Personal Info: Name "John Doe", Age "30", DOB "1994-01-01", Gender "Male"
+    3. Fill Contact: Address "123 Main St", Email "john.doe@example.com", Phone "5551234567"
+    4. Fill Employment: Position "QA Lead", Dept "Sales", Status "Active", Schedule "Full-time", Profile URL "https://example.com/jdoe", Salary "60000"
+    5. Click "Registrar Empleado"
+  Expected: Success message "Empleado registrado exitosamente!" is displayed and John Doe appears in the table.
+
+Jira-413 – TC-02: Name validation error (too short)
+  Steps:
+    1. Fill Name with "Jo" (2 characters)
+    2. Fill all other fields validly
+    3. Click "Registrar Empleado"
+  Expected: Error message under Name field indicating minimum 3 characters.
+
+Jira-413 – TC-03: Age validation error (under 18)
+  Steps:
+    1. Fill Age with "17"
+    2. Fill all other fields validly
+    3. Click "Registrar Empleado"
+  Expected: Error message under Age field indicating age must be between 18 and 65.
+
+Jira-413 – TC-04: Age validation error (over 65)
+  Steps:
+    1. Fill Age with "66"
+    2. Fill all other fields validly
+    3. Click "Registrar Empleado"
+  Expected: Error message under Age field indicating age must be between 18 and 65.
+
+Jira-413 – TC-05: Email validation error (invalid format)
+  Steps:
+    1. Fill Email with "john.doe@invalid"
+    2. Fill all other fields validly
+    3. Click "Registrar Empleado"
+  Expected: Error message under Email field indicating invalid email format.
+
+Jira-413 – TC-06: Empty mandatory fields
+  Steps:
+    1. Leave Name field empty
+    2. Fill all other fields validly
+    3. Click "Registrar Empleado"
+  Expected: Error message under Name field indicating it is mandatory.
+
+Jira-413 – TC-07: Table visualization verification
+  Steps:
+    1. Complete a valid registration
+    2. Scroll to the "Registered Employees" table
+    3. Check for the new entry
+  Expected: The table row correctly displays the registered employee data.

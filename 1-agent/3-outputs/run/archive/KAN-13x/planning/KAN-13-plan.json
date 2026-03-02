@@ -1,0 +1,11 @@
+{
+  "storyId": "KAN-13",
+  "selectedSkills": [
+    "generate-test-cases",
+    "execute-tests",
+    "run-accessibility-tests",
+    "run-lighthouse-tests",
+    "log-results"
+  ],
+  "reportPath": "planning/KAN-13-plan.html"
+}

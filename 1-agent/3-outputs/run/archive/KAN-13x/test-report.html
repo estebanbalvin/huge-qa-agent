@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full QA Report - KAN-13</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1100px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        header { background: #2c3e50; color: #fff; padding: 20px; border-radius: 8px 8px 0 0; margin-bottom: 20px; }
+        h1, h2, h3 { margin-top: 0; }
+        .summary-box { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+        .card { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); flex: 1; min-width: 200px; }
+        .status-pass { color: #27ae60; font-weight: bold; }
+        .status-fail { color: #c0392b; font-weight: bold; }
+        .status-skip { color: #7f8c8d; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; background: #fff; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #ecf0f1; color: #2c3e50; }
+        .evidence-img { max-width: 300px; cursor: pointer; border: 1px solid #ccc; border-radius: 4px; }
+        .lighthouse-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+        .score-circle { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; border: 4px solid #ddd; margin: 0 auto 5px; }
+        .score-high { border-color: #27ae60; color: #27ae60; }
+        .score-med { border-color: #f1c40f; color: #f1c40f; }
+        .score-low { border-color: #e67e22; color: #e67e22; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QA Test Report: KAN-13</h1>
+        <p><strong>Story:</strong> Team Popularity Dashboard</p>
+        <p><strong>URL:</strong> <a href="https://futbolbuggy.geekqa.net/" target="_blank" style="color: #ecf0f1;">https://futbolbuggy.geekqa.net/</a></p>
+        <p><strong>Timestamp:</strong> 2026-03-01 19:28</p>
+    </header>
+
+    <div class="summary-box">
+        <div class="card">
+            <h3>Overall Status</h3>
+            <p class="status-fail" style="font-size: 1.5em;">FAILED</p>
+            <p>4 Passed, 2 Failed, 2 Skipped</p>
+        </div>
+        <div class="card">
+            <h3>Lighthouse Scores</h3>
+            <div class="lighthouse-grid">
+                <div style="text-align: center;">
+                    <div class="score-circle score-med">76</div>
+                    <span>Perf</span>
+                </div>
+                <div style="text-align: center;">
+                    <div class="score-circle score-med">70</div>
+                    <span>A11y</span>
+                </div>
+                <div style="text-align: center;">
+                    <div class="score-circle score-med">73</div>
+                    <span>Best Prac</span>
+                </div>
+                <div style="text-align: center;">
+                    <div class="score-circle score-high">83</div>
+                    <span>SEO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <h2>Functional Execution Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Evidence / Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dashboard Visibility</td>
+                    <td><span class="status-pass">PASSED</span></td>
+                    <td>Functional</td>
+                    <td><img src="execution/tc01-visibility.png" class="evidence-img" alt="Visibility"></td>
+                </tr>
+                <tr>
+                    <td>Data Display</td>
+                    <td><span class="status-pass">PASSED</span></td>
+                    <td>Functional</td>
+                    <td>Team name, crest, and votes (0) displayed.</td>
+                </tr>
+                <tr>
+                    <td>Sorting Verification</td>
+                    <td><span class="status-pass">PASSED</span></td>
+                    <td>Functional</td>
+                    <td>Initial alphabetical/title sort correct while votes are 0.</td>
+                </tr>
+                <tr>
+                    <td>Real-Time Update</td>
+                    <td><span class="status-fail">FAILED</span></td>
+                    <td>Functional</td>
+                    <td><strong>Error:</strong> "Error al enviar el comentario. Revisa la conexión con la base de datos."<br>
+                    <img src="execution/tc04-vote-form.png" class="evidence-img" alt="Vote Error"></td>
+                </tr>
+                <tr>
+                    <td>Sorting Re-ranking</td>
+                    <td><span class="status-fail">FAILED</span></td>
+                    <td>Functional</td>
+                    <td>Counter did not update, re-ranking blocked.</td>
+                </tr>
+                <tr>
+                    <td>Responsive Mobile (375px)</td>
+                    <td><span class="status-pass">PASSED</span></td>
+                    <td>Visual/Resp</td>
+                    <td><img src="execution/tc06-responsive-375.png" class="evidence-img" alt="Mobile View"><br>
+                    Minor text clipping in filters.</td>
+                </tr>
+                <tr>
+                    <td>Handle Large Numbers</td>
+                    <td><span class="status-skip">SKIPPED</span></td>
+                    <td>Functional</td>
+                    <td>Votes stuck at 0 due to DB error.</td>
+                </tr>
+                <tr>
+                    <td>Broken Crest Image</td>
+                    <td><span class="status-pass">PASSED</span></td>
+                    <td>Functional</td>
+                    <td>Primary team images loaded successfully.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>Accessibility Audit Summary (WCAG 2.2 AA)</h2>
+        <div class="card">
+            <p><strong>Status:</strong> <span class="status-fail">FAILED</span></p>
+            <ul>
+                <li><span class="status-fail">Critical:</span> <strong>button-name</strong> - Pagination arrows missing discernible text.</li>
+                <li><span class="status-fail">Critical:</span> <strong>select-name</strong> - Filter dropdowns missing accessible labels.</li>
+                <li><span class="status-fail">Serious:</span> <strong>color-contrast</strong> - 24 nodes fail contrast requirements.</li>
+                <li><span class="status-med">Moderate:</span> <strong>heading-order</strong> - Skips H2 level.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Bugs & Defects Identified</h2>
+        <ul>
+            <li><span class="status-fail">[CRITICAL]</span> <strong>Database Connection Error on Vote:</strong> Clicking "Publicar Voto" results in a database error alert, preventing voting and real-time dashboard updates.</li>
+            <li><span class="status-fail">[MAJOR]</span> <strong>Real-Time Update Failure:</strong> Even simple "Votar" button does not increment the counter in the UI.</li>
+            <li><span class="status-skip">[MINOR]</span> <strong>A11y - Missing Labels:</strong> Filter selects and pagination buttons are not accessible to screen readers.</li>
+            <li><span class="status-skip">[MINOR]</span> <strong>UI - Responsive Clipping:</strong> Filter text is truncated at 375px width.</li>
+        </ul>
+    </section>
+</body>
+</html>

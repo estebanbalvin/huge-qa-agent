@@ -1,0 +1,11 @@
+{
+  "model": "gemini-2.0-flash",
+  "input_tokens": 150000,
+  "output_tokens": 10000,
+  "reasoning_tokens": 5000,
+  "tool_planning_tokens": 2000,
+  "context_reload_tokens": 1000,
+  "repo_awareness_tokens": 5000,
+  "total_tokens": 173000,
+  "estimated_cost": 0.02
+}

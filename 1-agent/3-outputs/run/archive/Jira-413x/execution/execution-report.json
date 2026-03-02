@@ -1,0 +1,65 @@
+{
+  "executionId": "exec-20260301-174000",
+  "timestamp": "2026-03-01T17:40:00Z",
+  "storyId": "Jira-413",
+  "totalTests": 6,
+  "passed": 2,
+  "failed": 4,
+  "skipped": 0,
+  "duration": "120 seconds",
+  "testResults": [
+    {
+      "testName": "TC01: Successful Employee Registration (Positive Case)",
+      "status": "FAILED",
+      "duration": "15s",
+      "error": "Salary bug: Table shows 0 instead of 50000.",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/execution/tc01-success.png"]
+      }
+    },
+    {
+      "testName": "TC02: Validation - Minimum Name Length (Negative Case)",
+      "status": "PASSED",
+      "duration": "10s",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/execution/tc02-name-error.png"]
+      }
+    },
+    {
+      "testName": "TC03: Validation - Age Out of Range - Too Young (Negative Case)",
+      "status": "FAILED",
+      "duration": "15s",
+      "error": "Allows registration with age 17. Violates AC (18-65).",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/execution/tc03-age-failure.png"]
+      }
+    },
+    {
+      "testName": "TC04: Validation - Age Out of Range - Too Old (Negative Case)",
+      "status": "FAILED",
+      "duration": "15s",
+      "error": "Inconsistent state: Shows error message but also success message. Table not updated.",
+      "evidence": {
+        "screenshots": []
+      }
+    },
+    {
+      "testName": "TC05: Validation - Invalid Email Format (Negative Case)",
+      "status": "FAILED",
+      "duration": "15s",
+      "error": "Allows registration with invalid email. No error message shown.",
+      "evidence": {
+        "screenshots": []
+      }
+    },
+    {
+      "testName": "TC06: Validation - Mandatory Fields (Negative Case)",
+      "status": "PASSED",
+      "duration": "10s",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/execution/tc06-mandatory-error.png"]
+      }
+    }
+  ],
+  "evidenceFolder": "3-outputs/run/Jira-413/execution/"
+}

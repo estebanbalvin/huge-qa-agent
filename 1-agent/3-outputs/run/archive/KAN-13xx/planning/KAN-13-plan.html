@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Analysis - KAN-13</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1, h2, h3 { color: #0056b3; }
+        .summary { background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .criticality { font-weight: bold; color: #d9534f; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #f2f2f2; }
+        .rationale { font-style: italic; color: #666; }
+        .success { color: #5cb85c; font-weight: bold; }
+        .skip { color: #f0ad4e; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>QA Test Analysis: KAN-13 - Team Popularity Dashboard</h1>
+    
+    <div class="summary">
+        <p><strong>URL:</strong> <a href="https://futbolbuggy.geekqa.net/">https://futbolbuggy.geekqa.net/</a></p>
+        <p><strong>Criticality:</strong> <span class="criticality">HIGH</span></p>
+        <p><strong>Goal:</strong> Implement and verify a real-time dashboard displaying team popularity rankings based on user votes.</p>
+    </div>
+
+    <h2>1. Requirements Analysis</h2>
+    <p>The core requirement is a "Standings" section on the main page that lists teams in descending order of votes. Key elements include team name, crest, and vote count. A critical technical requirement is that the counter must update in real-time after a vote is cast without a manual page refresh.</p>
+
+    <h2>2. Risk Assessment</h2>
+    <ul>
+        <li><strong>Real-time Update Failure:</strong> The most complex requirement; failure would mean users need to refresh to see their vote count.</li>
+        <li><strong>Sorting Logic:</strong> Incorrect sorting (e.g., ascending instead of descending) would lead to a wrong leaderboard.</li>
+        <li><strong>Responsive Layout:</strong> Dashboard components might break or become unreadable on mobile screens (375px).</li>
+        <li><strong>Performance:</strong> Handling large vote counts ("large numbers") could impact rendering speed or data accuracy.</li>
+    </ul>
+
+    <h2>3. Decision Matrix & Skill Selection</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>Status</th>
+                <th>Rationale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>generate-test-cases</td>
+                <td class="success">SELECTED</td>
+                <td>Required to cover multiple ACs (Visibility, Visualization, Order, Real-time) and responsive scenarios.</td>
+            </tr>
+            <tr>
+                <td>execute-tests</td>
+                <td class="success">SELECTED</td>
+                <td>Essential to verify the functional flow, especially the real-time update mechanism after voting.</td>
+            </tr>
+            <tr>
+                <td>run-accessibility-tests</td>
+                <td class="success">SELECTED</td>
+                <td>Mentions "FutbolBuggy user or visitor" (inclusive) and "mobile devices". WCAG compliance is standard for public dashboards.</td>
+            </tr>
+            <tr>
+                <td>run-lighthouse-tests</td>
+                <td class="success">SELECTED</td>
+                <td>Explicit concern in notes about "large numbers" and "high participation" suggests a need for performance auditing.</td>
+            </tr>
+            <tr>
+                <td>run-visual-tests</td>
+                <td class="skip">SKIPPED</td>
+                <td>No Figma files or design mockups were provided in the Jira ticket or asset folders.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. Proposed Test Scenarios</h2>
+    <ol>
+        <li><strong>Visibility Check:</strong> Verify the "Dashboard" or "Standings" section is visible on load.</li>
+        <li><strong>Data Integrity:</strong> Ensure each entry has Name, Crest, and Vote count.</li>
+        <li><strong>Sorting:</strong> Verify teams are sorted by votes DESC.</li>
+        <li><strong>Functional Vote:</strong> Cast a vote for a team and verify the UI counter increments immediately without reload.</li>
+        <li><strong>Responsive UI:</strong> Verify the ranking layout at 375px, 768px, and 1440px.</li>
+    </ol>
+
+    <h2>5. Early Developer Recommendations</h2>
+    <ul>
+        <li>Implement unit tests for the sorting algorithm (ensure it handles equal votes correctly).</li>
+        <li>Verify that the websocket/polling event for vote updates only refreshes the specific DOM element to save resources.</li>
+        <li>Check that team crest images have proper `alt` text for screen readers.</li>
+    </ul>
+</body>
+</html>

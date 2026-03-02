@@ -1,0 +1,55 @@
+KAN-13 - Team Popularity Dashboard Test Cases
+
+TC-01: Dashboard Visibility (Positive)
+  Priority: High
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Wait for the page to load completely.
+    3. Locate the "Dashboard", "Standings", or "Rankings" section.
+  Expected: The dashboard section is clearly visible on the main page.
+
+TC-02: Data Visualization Completeness (Positive)
+  Priority: Medium
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Inspect each team entry in the dashboard.
+  Expected: Each entry displays the Team Name, Team Crest (image), and Total Votes.
+
+TC-03: Hierarchical Sorting Order (Positive)
+  Priority: High
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Read the vote counts for all teams in the list.
+    3. Verify the order of the list.
+  Expected: Teams are displayed in descending order (highest votes at the top, lowest at the bottom).
+
+TC-04: Real-Time Vote Update (Positive)
+  Priority: Critical
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Identify a team and note its current vote count.
+    3. Click the "Vote" button for that team.
+    4. Observe the vote counter for that team.
+  Expected: The vote counter increments by 1 immediately without a manual page reload.
+
+TC-05: Responsive Design - Mobile Viewport (Positive)
+  Priority: Medium
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Set browser viewport to 375x667 (Mobile).
+    3. Inspect the dashboard layout.
+  Expected: The dashboard is responsive, no elements are overlapping, and text remains readable.
+
+TC-06: Handling Large Vote Numbers (Edge Case)
+  Priority: Medium
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. (Simulation/Mock) Inject a large vote count (e.g., 1,000,000) for a team via DevTools if possible, or verify existing high numbers.
+  Expected: The UI handles large numbers correctly (e.g., formatting with commas or 'k/M' suffix if designed) without breaking the layout.
+
+TC-07: Rapid Voting (Negative/Stress)
+  Priority: Low
+  Steps:
+    1. Navigate to https://futbolbuggy.geekqa.net/
+    2. Click the vote button multiple times rapidly.
+  Expected: The system handles multiple requests gracefully; counter reflects correct total or prevents spam according to site logic.

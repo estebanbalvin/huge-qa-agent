@@ -1,0 +1,104 @@
+{
+  "storyId": "KAN-13",
+  "bugReportDate": "2026-03-01T19:35:00Z",
+  "totalBugs": 4,
+  "summary": {
+    "critical": 1,
+    "high": 1,
+    "medium": 0,
+    "low": 2
+  },
+  "bugs": [
+    {
+      "bugId": "BUG-KAN-13-001",
+      "title": "Database Connection Error on Vote Submission",
+      "severity": "CRITICAL",
+      "category": "Functional Defect",
+      "reproducedBy": "TC-04 Real-Time Update",
+      "preconditions": "User on team details page with voting form.",
+      "reproductionSteps": [
+        "1. Navigate to https://futbolbuggy.geekqa.net/",
+        "2. Click on a team (e.g., Real Madrid).",
+        "3. Fill the '¡Deja tu mensaje!' form (Name, Country, Rating, Message).",
+        "4. Click 'Publicar Voto'."
+      ],
+      "expectedBehavior": "Comment and vote are saved; success message is displayed; counter increments.",
+      "actualBehavior": "Alert dialog appears with: 'Error al enviar el comentario. Revisa la conexión con la base de datos.'",
+      "evidence": {
+        "screenshots": ["bugs/evidence/tc04-vote-form.png"]
+      },
+      "environment": {
+        "browser": "Chrome (Desktop 1920x1080)",
+        "os": "Windows 11"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-KAN-13-002",
+      "title": "Real-Time Update Failure - UI Counter Not Incrementing",
+      "severity": "HIGH",
+      "category": "Functional Defect",
+      "reproducedBy": "TC-04 Real-Time Update",
+      "preconditions": "User clicks 'Votar por este club' button.",
+      "reproductionSteps": [
+        "1. Navigate to a team details page.",
+        "2. Click the 'Votar por este club' button at the top.",
+        "3. Navigate back to the dashboard or observe the total vote counter."
+      ],
+      "expectedBehavior": "UI counter increments immediately or after navigation back to dashboard.",
+      "actualBehavior": "No visual feedback is provided; counter remains at 0.",
+      "evidence": {
+        "screenshots": ["bugs/evidence/tc01-visibility.png"]
+      },
+      "environment": {
+        "browser": "Chrome (Desktop 1920x1080)",
+        "os": "Windows 11"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-KAN-13-003",
+      "title": "WCAG - Missing Accessible Names for Interactive Elements",
+      "severity": "LOW",
+      "category": "Accessibility issue",
+      "reproducedBy": "Skill 4: Accessibility Tests",
+      "preconditions": "Screen reader or automated audit running.",
+      "reproductionSteps": [
+        "1. Run axe-core on the main dashboard page.",
+        "2. Observe 'button-name' and 'select-name' violations."
+      ],
+      "expectedBehavior": "Buttons (pagination) and Selects (filters) have discernible text/labels.",
+      "actualBehavior": "Pagination arrows and filter dropdowns lack accessible names.",
+      "evidence": {
+        "reports": ["accessibility/KAN-13-report.json"]
+      },
+      "environment": {
+        "browser": "Chrome",
+        "os": "Windows 11"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-KAN-13-004",
+      "title": "UI - Text Clipping in Filters on Mobile Viewports",
+      "severity": "LOW",
+      "category": "UI defect",
+      "reproducedBy": "TC-06 Responsive Mobile (375px)",
+      "preconditions": "Mobile viewport width (375px).",
+      "reproductionSteps": [
+        "1. Set browser width to 375px.",
+        "2. Observe the League and Country filter buttons."
+      ],
+      "expectedBehavior": "Text should wrap or be fully visible within the button boundaries.",
+      "actualBehavior": "Text is truncated (e.g., 'Todas Lig', 'Todos Paí').",
+      "evidence": {
+        "screenshots": ["bugs/evidence/tc06-responsive-375.png"]
+      },
+      "environment": {
+        "browser": "Chrome Mobile (375px)",
+        "os": "Windows 11"
+      },
+      "status": "NEW"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "storyId": "US-001",
+  "url": "https://tusrecetas.lovable.app/",
+  "selectedSkills": [
+    {"name": "generate-test-cases", "reason": "Multiple validation rules (email, password) and error states require detailed cases."},
+    {"name": "execute-tests", "reason": "Critical user journey (Registration) must be verified functionally."},
+    {"name": "run-accessibility-tests", "reason": "Registration forms are critical for accessibility (labels, focus, errors)."},
+    {"name": "log-results", "reason": "Mandatory logging of execution."}
+  ],
+  "decisionMatrix": {
+    "run-lighthouse-tests": {"selected": false, "reason": "No specific performance or SEO requirements mentioned in the story."},
+    "run-visual-tests": {"selected": false, "reason": "No design assets or Figma files provided for comparison."}
+  },
+  "criticalityLevel": "HIGH",
+  "reportPath": "planning/US-001-plan.html"
+}

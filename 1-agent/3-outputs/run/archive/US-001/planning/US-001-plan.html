@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Plan: US-001</title>
+    <style>body{font-family:sans-serif;max-width:800px;margin:20px auto;line-height:1.6} table{width:100%;border-collapse:collapse} th,td{border:1px solid #ddd;padding:8px} th{background:#f4f4f4} .risk-high{color:red;font-weight:bold}</style>
+</head>
+<body>
+    <h1>Test Analysis: US-001 Registro de usuario</h1>
+    
+    <h2>1. Story Summary</h2>
+    <p><strong>Goal:</strong> As a visitor, I want to register with email and password to create and share recipes.</p>
+    <p><strong>URL:</strong> https://tusrecetas.lovable.app/</p>
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>Register with valid email and password (>= 8 chars).</li>
+        <li>Account creation in Supabase Auth.</li>
+        <li>Email verification sent.</li>
+        <li>No duplicate emails allowed.</li>
+        <li>Clear error messages for invalid inputs.</li>
+        <li>Login allowed after verification ("confirmed" state).</li>
+    </ul>
+
+    <h2>2. Risk Assessment</h2>
+    <p class="risk-high"><strong>Criticality: HIGH</strong> - User acquisition depends on this feature.</p>
+    <ul>
+        <li><strong>Auth Failure:</strong> Users cannot sign up, blocking all downstream features.</li>
+        <li><strong>Security:</strong> Weak passwords or unsecured transmission.</li>
+        <li><strong>Data Integrity:</strong> Duplicate accounts or invalid email formats.</li>
+        <li><strong>Email Delivery:</strong> Verification emails not arriving (External dependency).</li>
+    </ul>
+
+    <h2>3. Skill Selection Matrix</h2>
+    <table>
+        <tr>
+            <th>Skill</th>
+            <th>Selected</th>
+            <th>Rationale</th>
+        </tr>
+        <tr>
+            <td>Generate Test Cases</td>
+            <td>✅ YES</td>
+            <td>Complex validation logic and multiple ACs.</td>
+        </tr>
+        <tr>
+            <td>Execute Tests</td>
+            <td>✅ YES</td>
+            <td>Essential to verify the functional flow.</td>
+        </tr>
+        <tr>
+            <td>Run Accessibility</td>
+            <td>✅ YES</td>
+            <td>Forms must be accessible (labels, error announcements).</td>
+        </tr>
+        <tr>
+            <td>Run Lighthouse</td>
+            <td>❌ NO</td>
+            <td>No performance requirements specified.</td>
+        </tr>
+        <tr>
+            <td>Run Visual Tests</td>
+            <td>❌ NO</td>
+            <td>No design assets provided.</td>
+        </tr>
+    </table>
+
+    <h2>4. Proposed Test Scenarios</h2>
+    <ul>
+        <li><strong>Happy Path:</strong> Register with valid email and strong password. Verify success message.</li>
+        <li><strong>Validation:</strong> Attempt with short password (<8 chars). Verify error.</li>
+        <li><strong>Validation:</strong> Attempt with invalid email format. Verify error.</li>
+        <li><strong>Negative:</strong> Attempt to register with existing email. Verify specific error.</li>
+    </ul>
+
+    <h2>5. Developer Recommendations</h2>
+    <ul>
+        <li>Ensure API returns 400 Bad Request for invalid inputs.</li>
+        <li>Implement rate limiting on registration endpoint.</li>
+        <li>Ensure password field uses `type="password"`.</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+KAN-13 - Dashboard Visibility
+  Steps: Navigate to URL, check for "Dashboard" or "Standings" section.
+  Expected: Section is clearly visible on the main page.
+
+KAN-13 - Data Display
+  Steps: Locate any team card in the dashboard.
+  Expected: Name, crest image, and vote count are displayed.
+
+KAN-13 - Sorting Verification
+  Steps: Read vote counts from top to bottom.
+  Expected: Vote counts are in descending order (highest first).
+
+KAN-13 - Real-Time Update
+  Steps: Click vote button for a team, observe count in dashboard.
+  Expected: Count increments immediately without manual reload.
+
+KAN-13 - Sorting Re-ranking
+  Steps: Vote for a team until it surpasses the team above it.
+  Expected: Team's position in the leaderboard updates immediately.
+
+KAN-13 - Responsive Mobile (375px)
+  Steps: Set viewport to 375px wide, check dashboard layout.
+  Expected: Dashboard is readable and fits within screen bounds.
+
+KAN-13 - Handle Large Numbers
+  Steps: Check display of teams with 1,000+ votes.
+  Expected: Text does not overflow its container.
+
+KAN-13 - Broken Crest Image
+  Steps: Inspect team cards for missing images.
+  Expected: Fallback image or empty state is handled gracefully.

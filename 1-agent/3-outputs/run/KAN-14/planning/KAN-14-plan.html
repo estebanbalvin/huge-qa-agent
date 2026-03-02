@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Analysis Report - KAN-14</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1, h2 { color: #0056b3; }
+        .summary { background: #f4f4f4; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .risk-high { color: #d9534f; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>QA Analysis Report - KAN-14</h1>
+    <div class="summary">
+        <h2>Summary of Requirements</h2>
+        <p><strong>Story ID:</strong> KAN-14 (US-001)</p>
+        <p><strong>Title:</strong> Registro de usuario</p>
+        <p><strong>URL:</strong> https://tusrecetas.lovable.app/</p>
+        <p><strong>Goal:</strong> Implement user registration using Supabase Auth with email and password (minimum 8 characters).</p>
+        <p><strong>Acceptance Criteria:</strong>
+            <ul>
+                <li>Valid email and password (>= 8 chars) creates account and sends verification.</li>
+                <li>No duplicate emails allowed.</li>
+                <li>Clear errors for invalid email or weak password.</li>
+                <li>Email verification leads to "confirmed" status and login capability.</li>
+            </ul>
+        </p>
+    </div>
+
+    <h2>Risk Assessment</h2>
+    <p><strong>Criticality Level:</strong> <span class="risk-high">CRITICAL</span></p>
+    <p>Authentication is a core security component. Failure in registration prevents any user from using the platform and could lead to data integrity or security issues if not handled properly.</p>
+
+    <h2>Decision Matrix</h2>
+    <table>
+        <tr>
+            <th>Skill</th>
+            <th>Selected</th>
+            <th>Rationale</th>
+        </tr>
+        <tr>
+            <td>Generate Test Cases</td>
+            <td>Yes</td>
+            <td>Multiple ACs requiring specific validation scenarios (email format, password length, duplication).</td>
+        </tr>
+        <tr>
+            <td>Execute Tests</td>
+            <td>Yes</td>
+            <td>Functional flow must be verified end-to-end on the live URL.</td>
+        </tr>
+        <tr>
+            <td>Run Accessibility Tests</td>
+            <td>No</td>
+            <td>Explicitly excluded in JIRA ticket notes: "Nota: No correr pruebas de accessibilidad".</td>
+        </tr>
+        <tr>
+            <td>Run Lighthouse Tests</td>
+            <td>No</td>
+            <td>Performance and SEO are not primary requirements for this registration task.</td>
+        </tr>
+        <tr>
+            <td>Run Visual Tests</td>
+            <td>Yes</td>
+            <td>Design asset 'recipeshare.png' provided in JIRA. Need to ensure UI matches design.</td>
+        </tr>
+        <tr>
+            <td>Log Results</td>
+            <td>Yes</td>
+            <td>Mandatory reporting for audit and visibility.</td>
+        </tr>
+    </table>
+
+    <h2>Proposed Test Scenarios</h2>
+    <ol>
+        <li><strong>TC01 - Successful Registration:</strong> Register with a new valid email and password (>= 8 chars). Verify success message.</li>
+        <li><strong>TC02 - Duplicate Email:</strong> Attempt to register with an already registered email. Verify error message.</li>
+        <li><strong>TC03 - Invalid Email Format:</strong> Attempt to register with malformed email. Verify error message.</li>
+        <li><strong>TC04 - Weak Password:</strong> Attempt to register with password < 8 characters. Verify error message.</li>
+        <li><strong>TC05 - Visual Comparison:</strong> Verify the registration page UI against 'recipeshare.png'.</li>
+    </ol>
+
+    <h2>Early Developer Recommendations</h2>
+    <ul>
+        <li>Implement client-side validation for password length and email format for immediate feedback.</li>
+        <li>Ensure Supabase error codes are mapped to human-readable messages.</li>
+        <li>Verify SMTP / Email provider configuration for Supabase to ensure verification emails are sent.</li>
+    </ul>
+
+    <h2>Selected Skills for Workflow</h2>
+    <ul>
+        <li><strong>generate-test-cases:</strong> Detailed validation rules for input fields.</li>
+        <li><strong>execute-tests:</strong> Functional verification on browser.</li>
+        <li><strong>run-visual-tests:</strong> UI alignment with design mock.</li>
+        <li><strong>log-results:</strong> Final summary.</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "storyId": "Jira-413",
+  "selectedSkills": [
+    {"name": "generate-test-cases", "reason": "AC specifies multiple complex validation rules (age range, name length, email format)."},
+    {"name": "execute-tests", "reason": "Functional verification of the registration flow and results table update is essential."},
+    {"name": "log-results", "reason": "Always included for summary reporting."},
+    {"name": "report-bugs", "reason": "Always included to handle potential failures."},
+    {"name": "log-usage", "reason": "Always included for cost/token tracking."}
+  ],
+  "decisionMatrix": {
+    "accessibility": {"selected": false, "reason": "Explicitly excluded by user story instruction."},
+    "lighthouse": {"selected": false, "reason": "Performance/SEO not mentioned in story requirements."},
+    "visual": {"selected": false, "reason": "No design mocks or visual assets provided in the story inputs."}
+  },
+  "criticalityLevel": "HIGH",
+  "reportPath": "planning/Jira-413-plan.html"
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Report - Jira-413</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        header { background-color: #0056b3; color: white; padding: 20px; border-radius: 8px 8px 0 0; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        h1 { margin: 0; font-size: 24px; }
+        .summary-box { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .status { font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; font-size: 14px; }
+        .status-passed { background-color: #d4edda; color: #155724; }
+        .status-failed { background-color: #f8d7da; color: #721c24; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; color: #333; }
+        .evidence-img { max-width: 300px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px; }
+        .evidence-img:hover { opacity: 0.8; }
+        .audit-section { margin-top: 30px; }
+        .audit-card { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #6c757d; margin-bottom: 10px; }
+        .audit-card.skipped { border-left-color: #ffc107; background-color: #fff9e6; }
+        .bug-highlight { color: #d9534f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>QA Test Report: Jira-413</h1>
+            <p>New Employee Registration - 2026-03-01 22:58:00</p>
+        </div>
+        <div class="status status-failed">Overall: FAILED</div>
+    </header>
+
+    <div class="summary-box">
+        <h2>Execution Summary</h2>
+        <p><strong>Total Tests:</strong> 7 | <strong>Passed:</strong> 4 | <strong class="bug-highlight">Failed:</strong> 3</p>
+        <p><strong>Success Rate:</strong> 57%</p>
+        <p><strong>Bugs Found:</strong> 2 critical functional issues identified.</p>
+    </div>
+
+    <section>
+        <h2>Test Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Status</th>
+                    <th>Details / Error</th>
+                    <th>Evidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC-01: Successful Registration</td>
+                    <td><span class="status status-failed">FAILED</span></td>
+                    <td>Salary column in table displays "0" instead of the expected "60000".</td>
+                    <td><a href="execution/tc01-full-table.png" target="_blank"><img src="execution/tc01-full-table.png" class="evidence-img" alt="TC-01 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-02: Name Validation (Short)</td>
+                    <td><span class="status status-passed">PASSED</span></td>
+                    <td>Validation message "El nombre debe tener al menos 3 caracteres" correctly displayed.</td>
+                    <td><a href="execution/tc02-name-error.png" target="_blank"><img src="execution/tc02-name-error.png" class="evidence-img" alt="TC-02 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-03: Age Validation (Under 18)</td>
+                    <td><span class="status status-failed">FAILED</span></td>
+                    <td>Input "17" did not trigger any validation error. Form allowed navigation or failed silently.</td>
+                    <td><a href="execution/tc03-age-under-retry.png" target="_blank"><img src="execution/tc03-age-under-retry.png" class="evidence-img" alt="TC-03 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-04: Age Validation (Over 65)</td>
+                    <td><span class="status status-passed">PASSED</span></td>
+                    <td>Validation message "La edad debe estar entre 18 y 65 años" correctly displayed for input "66".</td>
+                    <td><a href="execution/tc04-age-over.png" target="_blank"><img src="execution/tc04-age-over.png" class="evidence-img" alt="TC-04 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-05: Email Validation</td>
+                    <td><span class="status status-passed">PASSED</span></td>
+                    <td>Validation message "Correo electrónico inválido" correctly displayed.</td>
+                    <td><a href="execution/tc05-email-error.png" target="_blank"><img src="execution/tc05-email-error.png" class="evidence-img" alt="TC-05 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-06: Mandatory Fields</td>
+                    <td><span class="status status-passed">PASSED</span></td>
+                    <td>All mandatory field errors triggered upon empty form submission.</td>
+                    <td><a href="execution/tc06-empty-fields.png" target="_blank"><img src="execution/tc06-empty-fields.png" class="evidence-img" alt="TC-06 Evidence"></a></td>
+                </tr>
+                <tr>
+                    <td>TC-07: Table Visualization</td>
+                    <td><span class="status status-failed">FAILED</span></td>
+                    <td>Data integration failure: The results table does not correctly reflect the Salary data.</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="audit-section">
+        <h2>Auxiliary Audits</h2>
+        <div class="audit-card skipped">
+            <h3>Accessibility Audit</h3>
+            <p><strong>Status:</strong> SKIPPED</p>
+            <p><strong>Reason:</strong> Explicitly excluded by user story instruction.</p>
+        </div>
+        <div class="audit-card skipped">
+            <h3>Lighthouse Performance/SEO</h3>
+            <p><strong>Status:</strong> SKIPPED</p>
+            <p><strong>Reason:</strong> Not required for this user story.</p>
+        </div>
+        <div class="audit-card skipped">
+            <h3>Visual Regression</h3>
+            <p><strong>Status:</strong> SKIPPED</p>
+            <p><strong>Reason:</strong> No design assets provided for comparison.</p>
+        </div>
+    </section>
+
+    <footer style="margin-top: 50px; text-align: center; color: #777; font-size: 12px;">
+        Generated by Gemini QA Agent v1.0
+    </footer>
+</body>
+</html>

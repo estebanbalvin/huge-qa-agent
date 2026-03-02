@@ -1,0 +1,59 @@
+{
+  "executionId": "exec-KAN-13-20260301",
+  "timestamp": "2026-03-01T18:45:00Z",
+  "storyId": "KAN-13",
+  "totalTests": 5,
+  "passed": 4,
+  "failed": 1,
+  "skipped": 0,
+  "duration": "120 seconds",
+  "testResults": [
+    {
+      "testId": "TC-01",
+      "testName": "Dashboard Visibility and Summary",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": []
+      }
+    },
+    {
+      "testId": "TC-02",
+      "testName": "Data Visualization for Team Cards",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": []
+      }
+    },
+    {
+      "testId": "TC-03",
+      "testName": "Hierarchical Sorting Order",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": []
+      }
+    },
+    {
+      "testId": "TC-04",
+      "testName": "Real-Time Vote Update",
+      "status": "FAILED",
+      "error": "Error al enviar el comentario. Revisa la conexión con la base de datos. (Status 500)",
+      "duration": "15s",
+      "evidence": {
+        "screenshots": ["KAN-13-vote-error.png"]
+      }
+    },
+    {
+      "testId": "TC-05",
+      "testName": "Responsive Design Check (375px)",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": ["KAN-13-responsive-375.png"]
+      }
+    }
+  ],
+  "evidenceFolder": ".playwright-mcp/"
+}

@@ -1,0 +1,47 @@
+{
+  "storyId": "KAN-13",
+  "timestamp": "2026-03-01T19:15:00Z",
+  "summary": {
+    "totalViolations": 4,
+    "critical": 2,
+    "serious": 1,
+    "moderate": 1
+  },
+  "breakpoints": ["375px", "768px", "1440px"],
+  "violations": [
+    {
+      "id": "button-name",
+      "impact": "critical",
+      "help": "Buttons must have discernible text",
+      "nodes": 2,
+      "note": "Pagination buttons (arrows) likely missing aria-label or text."
+    },
+    {
+      "id": "select-name",
+      "impact": "critical",
+      "help": "Select element must have an accessible name",
+      "nodes": 2,
+      "note": "League and Country filter dropdowns missing labels."
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": 24,
+      "note": "Widespread contrast issues, likely due to dark background and low-opacity text."
+    },
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "help": "Heading levels should only increase by one",
+      "nodes": 1,
+      "note": "Page skips H2 level (H1 -> H3)."
+    }
+  ],
+  "manualChecks": {
+    "headingHierarchy": "FAILED (skips H2)",
+    "altText": "PASSED (team crests have descriptive alt text)",
+    "focusVisibility": "PASSED (visible focus outline on interactive elements)",
+    "targetSize": "PASSED (buttons meet mobile tap target size recommendations)"
+  }
+}

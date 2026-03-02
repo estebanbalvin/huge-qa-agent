@@ -1,0 +1,16 @@
+{
+  "storyId": "US-002",
+  "url": "https://tusrecetas.lovable.app/",
+  "selectedSkills": [
+    {"name": "generate-test-cases", "reason": "Credential validation and session state logic require test cases."},
+    {"name": "execute-tests", "reason": "Critical user journey (Login) must be verified functionally."},
+    {"name": "run-accessibility-tests", "reason": "Login forms are high-impact for accessibility."},
+    {"name": "log-results", "reason": "Mandatory logging."}
+  ],
+  "decisionMatrix": {
+    "run-lighthouse-tests": {"selected": false, "reason": "No performance requirements."},
+    "run-visual-tests": {"selected": false, "reason": "No design assets provided."}
+  },
+  "criticalityLevel": "HIGH",
+  "reportPath": "planning/US-002-plan.html"
+}

@@ -1,0 +1,16 @@
+{
+  "storyId": "KAN-14",
+  "selectedSkills": [
+    {"name": "generate-test-cases", "reason": "AC validation for input fields and duplicate check."},
+    {"name": "execute-tests", "reason": "Functional end-to-end verification."},
+    {"name": "run-visual-tests", "reason": "Design asset 'recipeshare.png' provided."},
+    {"name": "log-results", "reason": "Mandatory reporting."}
+  ],
+  "decisionMatrix": {
+    "accessibility": {"selected": false, "reason": "Explicitly excluded by user."},
+    "lighthouse": {"selected": false, "reason": "Performance/SEO not prioritized."},
+    "visual": {"selected": true, "reason": "Design assets available."}
+  },
+  "criticalityLevel": "CRITICAL",
+  "reportPath": "planning/KAN-14-plan.html"
+}

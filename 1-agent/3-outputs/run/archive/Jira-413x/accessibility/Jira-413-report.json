@@ -1,0 +1,20 @@
+{
+  "storyId": "Jira-413",
+  "auditDate": "2026-03-01",
+  "verdict": "PARTIAL PASS",
+  "violations": [
+    {
+      "id": "A11Y-001",
+      "severity": "CRITICAL",
+      "type": "Responsive/Overflow",
+      "description": "Table width (1023px) exceeds mobile viewport (375px).",
+      "impact": "Loss of context on mobile devices."
+    }
+  ],
+  "manualChecks": {
+    "headingHierarchy": "PASSED",
+    "formLabels": "PASSED",
+    "focusVisibility": "PASSED",
+    "mobileResponsiveness": "FAILED"
+  }
+}

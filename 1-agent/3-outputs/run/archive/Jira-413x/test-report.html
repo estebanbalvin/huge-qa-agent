@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Test Report - Jira-413</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        .container { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 10px; }
+        .summary-cards { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .card { flex: 1; min-width: 200px; padding: 20px; border-radius: 8px; text-align: center; color: #fff; }
+        .card.passed { background-color: #27ae60; }
+        .card.failed { background-color: #e74c3c; }
+        .card.info { background-color: #3498db; }
+        .card h3 { margin: 0; font-size: 1.2em; }
+        .card p { font-size: 2em; font-weight: bold; margin: 10px 0 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #fff; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #34495e; color: #fff; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .status-passed { color: #27ae60; font-weight: bold; }
+        .status-failed { color: #e74c3c; font-weight: bold; }
+        .evidence-img { max-width: 300px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px; }
+        .metric-container { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .metric-bar { height: 20px; background-color: #eee; border-radius: 10px; flex-grow: 1; overflow: hidden; }
+        .metric-fill { height: 100%; background-color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QA Test Report: Jira-413</h1>
+        <p><strong>Story:</strong> Registration of collaborators in the GeekRetail system.</p>
+        <p><strong>Date:</strong> 2026-03-01</p>
+        <p><strong>Overall Verdict:</strong> <span class="status-failed">FAILED</span> (Critical bugs found)</p>
+
+        <div class="summary-cards">
+            <div class="card passed">
+                <h3>Passed</h3>
+                <p>2</p>
+            </div>
+            <div class="card failed">
+                <h3>Failed</h3>
+                <p>4</p>
+            </div>
+            <div class="card info">
+                <h3>Lighthouse Score</h3>
+                <p>90%</p>
+            </div>
+        </div>
+
+        <h2>1. Functional Execution Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test Case</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Notes / Errors</th>
+                    <th>Evidence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TC01: Successful Employee Registration</td>
+                    <td><span class="status-failed">FAILED</span></td>
+                    <td>Positive</td>
+                    <td>Salary bug: Table shows 0 instead of entered value (50000).</td>
+                    <td><img src="execution/tc01-success.png" class="evidence-img" alt="TC01 Evidence"></td>
+                </tr>
+                <tr>
+                    <td>TC02: Validation - Min Name Length</td>
+                    <td><span class="status-passed">PASSED</span></td>
+                    <td>Negative</td>
+                    <td>Validation correctly blocks names < 3 chars.</td>
+                    <td><img src="execution/tc02-name-error.png" class="evidence-img" alt="TC02 Evidence"></td>
+                </tr>
+                <tr>
+                    <td>TC03: Validation - Age Too Young</td>
+                    <td><span class="status-failed">FAILED</span></td>
+                    <td>Negative</td>
+                    <td>Allows registration with age 17. Violates AC.</td>
+                    <td><img src="execution/tc03-age-failure.png" class="evidence-img" alt="TC03 Evidence"></td>
+                </tr>
+                <tr>
+                    <td>TC04: Validation - Age Too Old</td>
+                    <td><span class="status-failed">FAILED</span></td>
+                    <td>Negative</td>
+                    <td>Inconsistent: Shows error but also success message. Table not updated.</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>TC05: Validation - Invalid Email</td>
+                    <td><span class="status-failed">FAILED</span></td>
+                    <td>Negative</td>
+                    <td>Allows registration with invalid email format. No error message.</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>TC06: Validation - Mandatory Fields</td>
+                    <td><span class="status-passed">PASSED</span></td>
+                    <td>Negative</td>
+                    <td>All mandatory fields trigger correct error messages.</td>
+                    <td><img src="execution/tc06-mandatory-error.png" class="evidence-img" alt="TC06 Evidence"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Accessibility Summary</h2>
+        <div class="metric-container">
+            <span>Score: 96%</span>
+            <div class="metric-bar"><div class="metric-fill" style="width: 96%;"></div></div>
+        </div>
+        <ul>
+            <li><strong>Critical Issue:</strong> Table overflows mobile viewport (1023px on 375px screen).</li>
+            <li><strong>Contrast Issues:</strong> Submit button contrast ratio is 3.13 (Below 4.5:1).</li>
+        </ul>
+
+        <h2>3. Performance & SEO (Lighthouse)</h2>
+        <ul>
+            <li><strong>Performance:</strong> 90%</li>
+            <li><strong>Accessibility:</strong> 96%</li>
+            <li><strong>Best Practices:</strong> 100%</li>
+            <li><strong>SEO:</strong> 90%</li>
+        </ul>
+        <p>Detailed reports: 
+            <a href="lighthouse/Jira-413-report.report.html" target="_blank">Lighthouse HTML</a> | 
+            <a href="accessibility/Jira-413-report.md" target="_blank">A11y Markdown</a>
+        </p>
+
+        <h2>4. Overall Recommendation</h2>
+        <p>The registration feature has several critical functional bugs related to data validation and integrity (Salary, Age, Email). The UI also lacks mobile responsiveness for the personnel table. It is recommended to fix these high-priority issues before deployment.</p>
+    </div>
+</body>
+</html>

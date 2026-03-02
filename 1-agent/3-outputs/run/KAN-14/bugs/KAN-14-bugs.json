@@ -1,0 +1,35 @@
+{
+  "storyId": "KAN-14",
+  "bugReportDate": "2026-03-02T09:30:00Z",
+  "totalBugs": 1,
+  "bugs": [
+    {
+      "bugId": "BUG-KAN-14-01",
+      "title": "Password length validation bypass (Accepts 7 chars, requires >= 8)",
+      "severity": "HIGH",
+      "category": "Security / Functional Defect",
+      "reproducedBy": "TC04 - Weak Password (Negative/Boundary)",
+      "preconditions": "User on registration page (Registrarse tab)",
+      "reproductionSteps": [
+        "1. Navigate to https://tusrecetas.lovable.app/auth",
+        "2. Click on 'Registrarse' tab.",
+        "3. Fill valid username, full name, and email.",
+        "4. Fill password with 7 characters (e.g. '1234567').",
+        "5. Click 'Crear Cuenta' button."
+      ],
+      "expectedBehavior": "System should display a clear error message (e.g. 'Password must be at least 8 characters') and prevent registration.",
+      "actualBehavior": "System successfully registers the account and redirects to the home page.",
+      "evidence": {
+        "screenshots": [
+          "3-outputs/run/KAN-14/bugs/evidence/BUG-KAN-14-01-weak-password.png"
+        ]
+      },
+      "environment": {
+        "browser": "Chromium",
+        "os": "win32",
+        "applicationVersion": "latest"
+      },
+      "status": "NEW"
+    }
+  ]
+}

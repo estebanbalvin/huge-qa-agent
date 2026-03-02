@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Plan: US-002</title>
+    <style>body{font-family:sans-serif;max-width:800px;margin:20px auto;line-height:1.6} table{width:100%;border-collapse:collapse} th,td{border:1px solid #ddd;padding:8px} th{background:#f4f4f4} .risk-high{color:red;font-weight:bold}</style>
+</head>
+<body>
+    <h1>Test Analysis: US-002 Inicio de sesión</h1>
+    
+    <h2>1. Story Summary</h2>
+    <p><strong>Goal:</strong> As a registered user, I want to log in to access recipes and favorites.</p>
+    <p><strong>URL:</strong> https://tusrecetas.lovable.app/</p>
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>Valid credentials -> Session created (token) and redirect to feed.</li>
+        <li>Invalid credentials -> Generic error message (no user enumeration).</li>
+        <li>Session persistence until manual logout or expiration.</li>
+    </ul>
+
+    <h2>2. Risk Assessment</h2>
+    <p class="risk-high"><strong>Criticality: HIGH</strong> - Access control is fundamental.</p>
+    <ul>
+        <li><strong>Lockout:</strong> Valid users cannot login.</li>
+        <li><strong>Security:</strong> User enumeration via error messages.</li>
+        <li><strong>Session:</strong> Token leakage or failure to persist.</li>
+    </ul>
+
+    <h2>3. Skill Selection Matrix</h2>
+    <table>
+        <tr>
+            <th>Skill</th>
+            <th>Selected</th>
+            <th>Rationale</th>
+        </tr>
+        <tr>
+            <td>Generate Test Cases</td>
+            <td>✅ YES</td>
+            <td>Validation of positive and negative login flows.</td>
+        </tr>
+        <tr>
+            <td>Execute Tests</td>
+            <td>✅ YES</td>
+            <td>Verify login functionality and redirection.</td>
+        </tr>
+        <tr>
+            <td>Run Accessibility</td>
+            <td>✅ YES</td>
+            <td>Login inputs and errors must be accessible.</td>
+        </tr>
+        <tr>
+            <td>Run Lighthouse</td>
+            <td>❌ NO</td>
+            <td>No performance requirements.</td>
+        </tr>
+        <tr>
+            <td>Run Visual Tests</td>
+            <td>❌ NO</td>
+            <td>No design assets provided.</td>
+        </tr>
+    </table>
+
+    <h2>4. Proposed Test Scenarios</h2>
+    <ul>
+        <li><strong>Happy Path:</strong> Login with valid confirmed account. Verify redirect to feed.</li>
+        <li><strong>Negative:</strong> Login with wrong password. Verify generic error.</li>
+        <li><strong>Negative:</strong> Login with non-existent email. Verify generic error.</li>
+        <li><strong>Persistence:</strong> Reload page after login. Verify session remains active.</li>
+    </ul>
+
+    <h2>5. Developer Recommendations</h2>
+    <ul>
+        <li>Ensure error messages do not reveal if an email exists ("Invalid email or password").</li>
+        <li>Check HttpOnly flags on cookies/tokens if applicable.</li>
+    </ul>
+</body>
+</html>

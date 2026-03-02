@@ -1,0 +1,38 @@
+US-001 Registro de usuario - Test Cases
+
+TC-01: Successful Registration
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/
+    2. Click "Registrarse"
+    3. Enter valid email (unique) and strong password
+    4. Click Submit
+  Expected:
+    - Success message displayed ("Verification sent" or similar)
+    - User created in backend (Supabase)
+
+TC-02: Validation - Password too short
+  Steps:
+    1. Navigate to Register page
+    2. Enter valid email
+    3. Enter password "123"
+    4. Click Submit
+  Expected:
+    - Error message displayed ("Password must be at least 6/8 characters")
+
+TC-03: Validation - Invalid Email
+  Steps:
+    1. Navigate to Register page
+    2. Enter email "invalid-email"
+    3. Enter valid password
+    4. Click Submit
+  Expected:
+    - Error message displayed ("Invalid email format")
+
+TC-04: Negative - Duplicate Email
+  Steps:
+    1. Navigate to Register page
+    2. Enter email that already exists
+    3. Enter valid password
+    4. Click Submit
+  Expected:
+    - Error message displayed ("User already registered" or generic error)

@@ -1,0 +1,53 @@
+{
+  "storyId": "Jira-413",
+  "bugReportDate": "2026-03-01T23:00:00Z",
+  "totalBugs": 2,
+  "bugs": [
+    {
+      "bugId": "BUG-Jira-413-01",
+      "title": "Salary field incorrectly displays 0 in the results table",
+      "severity": "CRITICAL",
+      "category": "Functional Defect",
+      "reproducedBy": "TC-01: Successful employee registration with all valid fields",
+      "preconditions": "User on the registration page",
+      "reproductionSteps": [
+        "1. Fill out the registration form with valid data",
+        "2. Enter 60000 in the 'Salario Esperado' field",
+        "3. Click 'Registrar Empleado'",
+        "4. Scroll down to the 'Empleados Registrados' table"
+      ],
+      "expectedBehavior": "The 'Salario' column in the table should display '60000'.",
+      "actualBehavior": "The 'Salario' column displays '0'.",
+      "evidence": {
+        "screenshots": ["evidence/BUG-Jira-413-01-salary-zero.png"]
+      },
+      "environment": {
+        "browser": "Chromium",
+        "os": "win32"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-02",
+      "title": "Age validation fails for lower bound (under 18)",
+      "severity": "HIGH",
+      "category": "Functional Defect",
+      "reproducedBy": "TC-03: Age validation error (under 18)",
+      "preconditions": "User on the registration page",
+      "reproductionSteps": [
+        "1. Enter '17' in the 'Edad' field",
+        "2. Click 'Registrar Empleado'"
+      ],
+      "expectedBehavior": "An error message 'La edad debe estar entre 18 y 65 años' should be displayed under the Age field.",
+      "actualBehavior": "No error message is displayed for age 17, and the form submission is not correctly blocked or reported as an error for this field.",
+      "evidence": {
+        "screenshots": ["evidence/BUG-Jira-413-02-age-validation.png"]
+      },
+      "environment": {
+        "browser": "Chromium",
+        "os": "win32"
+      },
+      "status": "NEW"
+    }
+  ]
+}

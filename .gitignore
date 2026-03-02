@@ -1,5 +1,5 @@
 # Ignore outputs
-3-outputs/
+3-outputs/**
 
 # Node modules
 **/node_modules/
@@ -15,3 +15,5 @@ bin/
 
 # optional: credentials
 1-agent/.credentials/
+
+.credentials/**

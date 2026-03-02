@@ -1,0 +1,71 @@
+{
+  "executionId": "exec-KAN-13-20260301-1907",
+  "timestamp": "2026-03-01T19:07:00Z",
+  "storyId": "KAN-13",
+  "totalTests": 8,
+  "passed": 4,
+  "failed": 2,
+  "skipped": 2,
+  "duration": "120 seconds",
+  "testResults": [
+    {
+      "testName": "Dashboard Visibility",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": ["3-outputs/run/KAN-13/execution/tc01-visibility.png"]
+      }
+    },
+    {
+      "testName": "Data Display",
+      "status": "PASSED",
+      "duration": "2s",
+      "evidence": {
+        "screenshots": ["3-outputs/run/KAN-13/execution/tc01-visibility.png"]
+      }
+    },
+    {
+      "testName": "Sorting Verification",
+      "status": "PASSED",
+      "duration": "2s",
+      "note": "Initial sort is correct based on titles since votes are all 0"
+    },
+    {
+      "testName": "Real-Time Update",
+      "status": "FAILED",
+      "duration": "15s",
+      "error": "Error al enviar el comentario. Revisa la conexión con la base de datos.",
+      "evidence": {
+        "screenshots": ["3-outputs/run/KAN-13/execution/tc04-vote-form.png"]
+      }
+    },
+    {
+      "testName": "Sorting Re-ranking",
+      "status": "FAILED",
+      "duration": "5s",
+      "error": "Vote counter did not update, re-ranking could not be verified."
+    },
+    {
+      "testName": "Responsive Mobile (375px)",
+      "status": "PASSED",
+      "duration": "5s",
+      "evidence": {
+        "screenshots": ["3-outputs/run/KAN-13/execution/tc06-responsive-375.png"]
+      },
+      "note": "Minor clipping in filter text, but dashboard cards are responsive."
+    },
+    {
+      "testName": "Handle Large Numbers",
+      "status": "SKIPPED",
+      "duration": "0s",
+      "note": "Could not test as all vote counts are 0 due to DB error."
+    },
+    {
+      "testName": "Broken Crest Image",
+      "status": "PASSED",
+      "duration": "2s",
+      "note": "Images for top teams loaded correctly."
+    }
+  ],
+  "evidenceFolder": "3-outputs/run/KAN-13/execution/"
+}

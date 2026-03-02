@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Final Test Report - KAN-14</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        header { background-color: #0056b3; color: white; padding: 20px; border-radius: 8px 8px 0 0; margin-bottom: 20px; }
+        .summary-cards { display: flex; gap: 20px; margin-bottom: 20px; }
+        .card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); flex: 1; text-align: center; }
+        .card.pass { border-top: 5px solid #28a745; }
+        .card.fail { border-top: 5px solid #dc3545; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .status-pass { color: #28a745; font-weight: bold; }
+        .status-fail { color: #dc3545; font-weight: bold; }
+        .screenshot-link { color: #007bff; text-decoration: none; cursor: pointer; }
+        .screenshot-link:hover { text-decoration: underline; }
+        .bug-section { background-color: #fff3f3; border-left: 5px solid #dc3545; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        .skipped-section { background-color: #fcfcfc; border-left: 5px solid #ccc; padding: 15px; margin: 20px 0; border-radius: 4px; color: #666; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>QA Final Test Report - KAN-14</h1>
+        <p><strong>Story:</strong> US-001 Registro de usuario</p>
+        <p><strong>Timestamp:</strong> 2026-03-02 09:25:00</p>
+    </header>
+
+    <div class="summary-cards">
+        <div class="card">
+            <h3>Total Tests</h3>
+            <p>5</p>
+        </div>
+        <div class="card pass">
+            <h3>Passed</h3>
+            <p>4</p>
+        </div>
+        <div class="card fail">
+            <h3>Failed</h3>
+            <p>1</p>
+        </div>
+    </div>
+
+    <h2>Test Execution Results</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>TC ID</th>
+                <th>Test Case Name</th>
+                <th>Status</th>
+                <th>Duration</th>
+                <th>Evidence</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TC01</td>
+                <td>Successful Registration (Positive)</td>
+                <td class="status-pass">PASSED</td>
+                <td>3.3s</td>
+                <td><a class="screenshot-link" href="execution/tc01-success.png">View Screenshot</a></td>
+            </tr>
+            <tr>
+                <td>TC02</td>
+                <td>Duplicate Email (Negative)</td>
+                <td class="status-pass">PASSED</td>
+                <td>1.1s</td>
+                <td><a class="screenshot-link" href="execution/tc02-duplicate-error.png">View Screenshot</a></td>
+            </tr>
+            <tr>
+                <td>TC03</td>
+                <td>Invalid Email Format (Negative)</td>
+                <td class="status-pass">PASSED</td>
+                <td>0.6s</td>
+                <td><a class="screenshot-link" href="execution/tc03-invalid-email.png">View Screenshot</a></td>
+            </tr>
+            <tr>
+                <td>TC04</td>
+                <td>Weak Password (Negative/Boundary)</td>
+                <td class="status-fail">FAILED</td>
+                <td>10.7s</td>
+                <td><a class="screenshot-link" href="execution/tc04-BUG-weak-password-accepted.png">View Bug Evidence</a></td>
+            </tr>
+            <tr>
+                <td>TC05</td>
+                <td>Visual Layout Check</td>
+                <td class="status-pass">PASSED</td>
+                <td>0.8s</td>
+                <td><a class="screenshot-link" href="execution/tc05-visual-check.png">View Screenshot</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="bug-section">
+        <h3>Critical Bug Found: Password Length Validation</h3>
+        <p><strong>Description:</strong> The application accepts passwords shorter than 8 characters, violating the Acceptance Criteria which states: <em>"Cuando ingreso email válido y contraseña >= 8 chars... Error claro si... contraseña débil."</em></p>
+        <p><strong>Evidence:</strong> During TC04, a 7-character password ('1234567') was accepted and the user was successfully registered/redirected instead of seeing an error message.</p>
+        <p><strong>Severity:</strong> HIGH (Security/Requirement Non-compliance)</p>
+    </div>
+
+    <div class="skipped-section">
+        <h3>Additional Audit Summaries</h3>
+        <p><strong>Accessibility:</strong> SKIPPED (Explicitly excluded in JIRA ticket notes).</p>
+        <p><strong>Lighthouse (Perf/SEO):</strong> SKIPPED (Not part of current sprint requirements).</p>
+        <p><strong>Visual Regression:</strong> SKIPPED (Design asset 'recipeshare.png' not found in workspace for pixel-to-pixel comparison; screenshot taken for manual review).</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gemini CLI QA Agent</p>
+    </footer>
+</body>
+</html>

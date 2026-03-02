@@ -1,0 +1,29 @@
+US-002 Inicio de sesión - Test Cases
+
+TC-01: Successful Login
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/
+    2. Click "Iniciar sesión"
+    3. Enter valid confirmed email and password
+    4. Click Submit
+  Expected:
+    - Redirect to Feed/Home
+    - Session token present
+
+TC-02: Negative - Invalid Password
+  Steps:
+    1. Navigate to Login page
+    2. Enter valid email
+    3. Enter wrong password
+    4. Click Submit
+  Expected:
+    - Error message displayed ("Invalid login credentials")
+
+TC-03: Negative - Non-existent User
+  Steps:
+    1. Navigate to Login page
+    2. Enter "nonexistent@example.com"
+    3. Enter any password
+    4. Click Submit
+  Expected:
+    - Error message displayed ("Invalid login credentials")

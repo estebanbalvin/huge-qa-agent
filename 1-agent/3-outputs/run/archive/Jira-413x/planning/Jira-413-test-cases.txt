@@ -1,0 +1,67 @@
+QA Test Cases - Jira-413: New Employee Registration
+
+ID: Jira-413 - TC01
+Name: Successful Employee Registration (Positive Case)
+Steps: 
+1. Navigate to https://testing1.geekqa.net/
+2. Fill Name with "John Doe"
+3. Fill Age with 30
+4. Fill DOB with "1994-01-01"
+5. Select Gender: "Male"
+6. Fill Address with "123 Main St"
+7. Fill Email with "john.doe@example.com"
+8. Fill Phone with "1234567890"
+9. Fill Position with "Developer"
+10. Select Department: "Logistics"
+11. Select Contract: "Active"
+12. Fill Schedule with "Full-time"
+13. Fill Profile with "https://example.com/john"
+14. Fill Salary with 50000
+15. Click "Register Employee"
+Expected Result: 
+- Success message "Empleado registrado exitosamente!" appears. 
+- The employee "John Doe" appears in the "Registered Employees" table.
+Status: pending
+
+ID: Jira-413 - TC02
+Name: Validation - Minimum Name Length (Negative Case)
+Steps: 
+1. Fill Name with "Jo"
+2. Fill other valid fields
+3. Click "Register Employee"
+Expected Result: Error message "Nombre debe tener al menos 3 caracteres" (or similar) under the Name field. No success message.
+Status: pending
+
+ID: Jira-413 - TC03
+Name: Validation - Age Out of Range - Too Young (Negative Case)
+Steps: 
+1. Fill Age with "17"
+2. Fill other valid fields
+3. Click "Register Employee"
+Expected Result: Error message "La edad debe estar entre 18 y 65 años" (or similar) under the Age field. No success message.
+Status: pending
+
+ID: Jira-413 - TC04
+Name: Validation - Age Out of Range - Too Old (Negative Case)
+Steps: 
+1. Fill Age with "66"
+2. Fill other valid fields
+3. Click "Register Employee"
+Expected Result: Error message "La edad debe estar entre 18 y 65 años" (or similar) under the Age field. No success message.
+Status: pending
+
+ID: Jira-413 - TC05
+Name: Validation - Invalid Email Format (Negative Case)
+Steps: 
+1. Fill Email with "invalid-email"
+2. Fill other valid fields
+3. Click "Register Employee"
+Expected Result: Error message "Correo electrónico inválido" (or similar) under the Email field. No success message.
+Status: pending
+
+ID: Jira-413 - TC06
+Name: Validation - Mandatory Fields (Negative Case)
+Steps: 
+1. Click "Register Employee" with all fields empty.
+Expected Result: Error messages appear under mandatory fields. No success message.
+Status: pending

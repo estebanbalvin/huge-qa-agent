@@ -1,0 +1,42 @@
+{
+  "model": "gemini-1.5-pro",
+  "usage_breakdown": [
+    {
+      "category": "Input tokens",
+      "tokens": 45000,
+      "meaning": "System prompt, user story, and context for planning",
+      "time_ms": 1500,
+      "relatedSkill": "read-and-plan-scenarios"
+    },
+    {
+      "category": "Output tokens",
+      "tokens": 12000,
+      "meaning": "Generated test cases, HTML reports, and bug documentation",
+      "time_ms": 3500,
+      "relatedSkill": "multiple"
+    },
+    {
+      "category": "Reasoning tokens",
+      "tokens": 5000,
+      "meaning": "Internal logic for test strategy and bug analysis",
+      "time_ms": 2000,
+      "relatedSkill": "multiple"
+    },
+    {
+      "category": "Tool planning tokens",
+      "tokens": 3500,
+      "meaning": "Formulating MCP calls for Playwright and Sheets",
+      "time_ms": 800,
+      "relatedTool": "browser_run_code"
+    },
+    {
+      "category": "Repo awareness tokens",
+      "tokens": 2000,
+      "meaning": "Reading skills and project structure",
+      "time_ms": 400,
+      "relatedTool": "read_file"
+    }
+  ],
+  "total_tokens": 67500,
+  "estimated_cost_usd": 0.35
+}

@@ -1,0 +1,48 @@
+KAN-14 - US-001 Registro de usuario
+
+TC01 - Successful Registration (Positive)
+  Steps: 
+    1. Navigate to https://tusrecetas.lovable.app/auth
+    2. Click on "Registrarse" tab.
+    3. Fill "Nombre de usuario" with "tester123".
+    4. Fill "Nombre completo" with "QA Tester".
+    5. Fill "Email" with "qa_tester_<timestamp>@example.com".
+    6. Fill "Contraseña" with "P@ssw0rd123".
+    7. Click "Crear Cuenta".
+  Expected: Success notification or message asking to verify email.
+
+TC02 - Duplicate Email (Negative)
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/auth
+    2. Click on "Registrarse" tab.
+    3. Fill "Nombre de usuario" with "dup_user".
+    4. Fill "Nombre completo" with "Duplicate User".
+    5. Fill "Email" with "existing_user@example.com".
+    6. Fill "Contraseña" with "P@ssw0rd123".
+    7. Click "Crear Cuenta".
+  Expected: Error message indicating the email is already in use.
+
+TC03 - Invalid Email Format (Negative)
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/auth
+    2. Click on "Registrarse" tab.
+    3. Fill "Email" with "invalid-email".
+    4. Fill "Contraseña" with "P@ssw0rd123".
+    5. Click "Crear Cuenta".
+  Expected: Error message for invalid email format.
+
+TC04 - Weak Password (Negative/Boundary)
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/auth
+    2. Click on "Registrarse" tab.
+    3. Fill "Email" with "valid@example.com".
+    4. Fill "Contraseña" with "1234567".
+    5. Click "Crear Cuenta".
+  Expected: Error message indicating the password must have at least 8 characters.
+
+TC05 - Visual Regression
+  Steps:
+    1. Navigate to https://tusrecetas.lovable.app/auth
+    2. Click on "Registrarse" tab.
+    3. Compare full page with design asset 'recipeshare.png'.
+  Expected: Layout, colors, and components match the design mockup.

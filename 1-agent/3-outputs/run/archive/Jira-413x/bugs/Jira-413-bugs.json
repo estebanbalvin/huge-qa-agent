@@ -1,0 +1,120 @@
+{
+  "storyId": "Jira-413",
+  "bugReportDate": "2026-03-01T18:10:00Z",
+  "totalBugs": 6,
+  "bugs": [
+    {
+      "bugId": "BUG-Jira-413-001",
+      "title": "Salary field data integrity issue: Table shows 0 instead of entered value",
+      "severity": "CRITICAL",
+      "category": "Functional Defect",
+      "reproducedBy": "TC01: Successful Employee Registration (Positive Case)",
+      "preconditions": "User is on the registration page",
+      "reproductionSteps": [
+        "1. Fill all mandatory fields with valid data",
+        "2. Enter 50000 in the 'Salario Esperado' field",
+        "3. Click 'Registrar Empleado'",
+        "4. Observe the 'Salario' column in the 'Empleados Registrados' table"
+      ],
+      "expectedBehavior": "The table should display '50000' in the Salario column.",
+      "actualBehavior": "The table displays '0' in the Salario column.",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/bugs/evidence/tc01-success.png"]
+      },
+      "environment": {
+        "browser": "Chrome",
+        "os": "win32",
+        "applicationVersion": "v1.0.0"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-002",
+      "title": "Age validation bypass: Allows registration with age 17",
+      "severity": "CRITICAL",
+      "category": "Functional Defect",
+      "reproducedBy": "TC03: Validation - Age Out of Range - Too Young",
+      "preconditions": "User is on the registration page",
+      "reproductionSteps": [
+        "1. Fill all mandatory fields with valid data",
+        "2. Enter '17' in the 'Edad' field",
+        "3. Click 'Registrar Empleado'"
+      ],
+      "expectedBehavior": "System should show an error message and prevent registration.",
+      "actualBehavior": "System shows 'Empleado registrado exitosamente!' and adds the employee to the table with age 17.",
+      "evidence": {
+        "screenshots": ["3-outputs/run/Jira-413/bugs/evidence/tc03-age-failure.png"]
+      },
+      "environment": {
+        "browser": "Chrome",
+        "os": "win32",
+        "applicationVersion": "v1.0.0"
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-003",
+      "title": "Inconsistent validation state for age 66: Shows error but also success message",
+      "severity": "MEDIUM",
+      "category": "UI Defect",
+      "reproducedBy": "TC04: Validation - Age Out of Range - Too Old",
+      "reproductionSteps": [
+        "1. Enter '66' in the 'Edad' field",
+        "2. Fill other fields and click 'Registrar Empleado'"
+      ],
+      "expectedBehavior": "Only an error message should be shown; no success message.",
+      "actualBehavior": "Error message 'La edad debe estar entre 18 y 65 años' is shown, but also 'Empleado registrado exitosamente!'. Table is not updated.",
+      "evidence": {
+        "screenshots": []
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-004",
+      "title": "Email validation bypass: Allows registration with invalid email format",
+      "severity": "HIGH",
+      "category": "Functional Defect",
+      "reproducedBy": "TC05: Validation - Invalid Email Format",
+      "reproductionSteps": [
+        "1. Enter 'invalid-email' in the 'Correo Electrónico' field",
+        "2. Fill other fields and click 'Registrar Empleado'"
+      ],
+      "expectedBehavior": "Error message should be shown and registration prevented.",
+      "actualBehavior": "System shows 'Empleado registrado exitosamente!' and accepts the invalid email.",
+      "evidence": {
+        "screenshots": []
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-005",
+      "title": "Table horizontal overflow on mobile devices",
+      "severity": "HIGH",
+      "category": "Accessibility issue",
+      "reproducedBy": "Accessibility Audit",
+      "reproductionSteps": [
+        "1. Open the page on a mobile device (375px width)",
+        "2. Scroll down to the 'Empleados Registrados' table"
+      ],
+      "expectedBehavior": "Table should be responsive or scrollable within viewport.",
+      "actualBehavior": "Table width is 1023px, causing significant horizontal overflow on 375px viewport.",
+      "evidence": {
+        "screenshots": []
+      },
+      "status": "NEW"
+    },
+    {
+      "bugId": "BUG-Jira-413-006",
+      "title": "Insufficient color contrast on 'Registrar Empleado' button",
+      "severity": "LOW",
+      "category": "Accessibility issue",
+      "reproducedBy": "Lighthouse Audit",
+      "expectedBehavior": "Contrast ratio should be at least 4.5:1.",
+      "actualBehavior": "Contrast ratio is 3.13:1 (White text on Green #28a745 background).",
+      "evidence": {
+        "screenshots": []
+      },
+      "status": "NEW"
+    }
+  ]
+}

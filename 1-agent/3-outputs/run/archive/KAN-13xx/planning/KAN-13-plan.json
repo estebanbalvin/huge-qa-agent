@@ -1,0 +1,34 @@
+{
+  "storyId": "KAN-13",
+  "selectedSkills": [
+    {
+      "name": "generate-test-cases",
+      "reason": "ACs require multiple validation rules: visibility, visualization elements, hierarchical order, and real-time updates."
+    },
+    {
+      "name": "execute-tests",
+      "reason": "The real-time update requirement must be verified through functional interaction in a browser."
+    },
+    {
+      "name": "run-accessibility-tests",
+      "reason": "Responsive design and diverse user base are explicitly mentioned; WCAG 2.2 AA testing is required."
+    },
+    {
+      "name": "run-lighthouse-tests",
+      "reason": "Large numbers and high participation are noted, justifying a performance and SEO audit."
+    },
+    {
+      "name": "log-results",
+      "reason": "Always included"
+    }
+  ],
+  "decisionMatrix": {
+    "generate-test-cases": { "selected": true, "reason": "AC complexity requires detailed scenario definition." },
+    "execute-tests": { "selected": true, "reason": "Functional flow validation needed." },
+    "accessibility": { "selected": true, "reason": "Mentions mobile and diverse audience." },
+    "lighthouse": { "selected": true, "reason": "Performance concern with high traffic/large data." },
+    "visual": { "selected": false, "reason": "No design assets/Figma provided." }
+  },
+  "criticalityLevel": "HIGH",
+  "reportPath": "planning/KAN-13-plan.html"
+}
