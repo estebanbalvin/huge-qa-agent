@@ -7,8 +7,8 @@
 # binaries and build artifacts
 bin/
 
-# ignore stories content
-1-agent/2-stories/**
+# test results and generated outputs
+1-agent/test-results/
 
 # playwright artifacts
 .playwright-mcp/
