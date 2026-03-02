@@ -10,6 +10,9 @@ bin/
 # test results and generated outputs
 1-agent/test-results/
 
+# ignore any outputs folders
+3-outputs/**
+
 # playwright artifacts
 .playwright-mcp/
 
