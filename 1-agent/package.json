@@ -1,0 +1,22 @@
+{
+  "name": "agent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "qa-agent": "npx gemini"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/gemini-cli": "latest",
+    "@aashari/mcp-server-atlassian-jira": "^3.3.0",
+    "@playwright/test": "^1.40.0",
+    "@axe-core/playwright": "^4.10.1",
+    "lighthouse": "^12.3.0",
+    "playwright-lighthouse": "^4.0.0",
+    "mcp-gsheets": "latest"
+  }
+}

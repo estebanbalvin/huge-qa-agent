@@ -1,0 +1,72 @@
+{
+ "general": {
+    "model": "gemini-3-flash",
+    "temperature": 0.1,
+    "auto_edit": true,
+    "tools": {
+      "allowed": ["run_shell_command", "write_file", "google_search"]
+    },
+    "defaultApprovalMode": "auto_edit"
+  },
+
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+
+  "sandbox": {
+    "mode": "workspace-write"
+  },
+   "allowedPaths": [
+    "./",
+    "../",
+    "/Users",
+    "/workspace"
+  ],
+ "execution": {
+    "verbosity": "minimal",
+    "reasoning": "hidden",
+    "toolNarration": false
+  },
+   "agent": {
+    "maxSteps": 6,
+    "parallelTools": true
+  },
+
+  "mcpServers": {
+    "jira": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@aashari/mcp-server-atlassian-jira"
+      ],
+      "env": {
+        "ATLASSIAN_SITE_NAME": "${ATLASSIAN_SITE_NAME}",
+        "ATLASSIAN_USER_EMAIL": "${ATLASSIAN_USER_EMAIL}",
+        "ATLASSIAN_API_TOKEN": "${ATLASSIAN_API_TOKEN}"
+      }
+    },
+    "google-sheets": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-gsheets@latest"
+        
+      ],
+   
+      "env": {
+       "GOOGLE_APPLICATION_CREDENTIALS": "${GOOGLE_SHEETS_CREDENTIALS_PATH}",
+        "GOOGLE_PROJECT_ID": "${GOOGLE_PROJECT_ID}"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@0.0.51"
+      ]
+    
+    }
+  }
+}

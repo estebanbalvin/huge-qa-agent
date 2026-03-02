@@ -1,0 +1,17 @@
+# Ignore outputs
+3-outputs/
+
+# Node modules
+**/node_modules/
+
+# binaries and build artifacts
+bin/
+
+# ignore stories content
+1-agent/2-stories/**
+
+# playwright artifacts
+.playwright-mcp/
+
+# optional: credentials
+1-agent/.credentials/
