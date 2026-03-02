@@ -1,0 +1,27 @@
+Ticket id : Jira-413
+User Story: New Employee Registration
+
+URL: https://testing1.geekqa.net/
+
+Title: Registration of collaborators in the GeekRetail system.
+
+As a: Human Resources Administrator.
+I want to: Enter the personal, contact, and employment data of a new employee into the registration form.
+So that: I can maintain an updated and centralized database of the company's personnel.
+
+Acceptance Criteria:
+Mandatory Fields and Validation: The system must allow the entry of:
+
+Personal Information: Name (min. 3 characters), Age (between 18 and 65 years), Date of Birth, and Gender.
+
+Contact: Address, Email (valid format), and Phone Number.
+
+Employment Data: Position, Department (Sales, Administration, Logistics), Contract Status (Active/Inactive), Schedule, Profile URL, and Salary.
+
+Error Validation: If the user attempts to register data that does not meet the rules (e.g., age out of range or invalid email), the system must display a specific error message under the corresponding field.
+
+Registration Confirmation: Upon clicking "Register Employee" and passing validations, the message "Empleado registrado exitosamente!" (Employee registered successfully!) must be displayed.
+
+Table Visualization: The data of the newly registered employee must immediately appear in the "Registered Employees" table at the bottom of the page.
+
+Atencion: No correr pruebas de accessibilidad sobre esta pagina. 

@@ -1,0 +1,8 @@
+US-002 Inicio de sesión 
+Como usuario registrado 
+Quiero iniciar sesión 
+Para acceder a mis recetas y favoritos 
+Criterios de aceptación 
+● Dado credenciales válidas → sesión creada (token) y redirección al feed. 
+● Dado credenciales inválidas → mensaje de error sin filtrar si email existe. 
+● Persistencia de sesión hasta cierre manual o expiración.
